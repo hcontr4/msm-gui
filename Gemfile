@@ -111,3 +111,5 @@ end
 # for scraping imdb
 gem 'themoviedb-api'
 gem 'mechanize'
+
+gem 'debug', group: :development

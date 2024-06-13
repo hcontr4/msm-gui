@@ -6,6 +6,50 @@
   Go back
 </a>
 
+<div>
+  <a href="/delete_director/<%= @the_director.id %>">
+    Delete director
+  </a>
+</div>
+
+<hr>
+<form action="/modify_director/<%= @the_director.id %>" method="post">
+  <div>
+    <label for="name_box">
+      Name
+    </label>
+
+    <input type="text" id="name_box" name="query_name" value="<%= @the_director.name %>">
+  </div>
+
+  <div>
+    <label for="dob_box">
+      Dob
+    </label>
+
+    <input type="date" id="dob_box" name="query_dob" value="<%= @the_director.dob %>">
+  </div>
+
+  <div>
+    <label for="bio_box">
+      Bio
+    </label>
+
+    <textarea id="bio_box" name="query_bio" rows="3"><%= @the_director.bio %></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Image
+    </label>
+
+    <input type="text" id="image_box" name="query_image" value="<%= @the_director.image %>">
+  </div>
+
+  <button>
+    Update director
+  </button>
+</form>
 <hr>
 
 <dl>
@@ -85,36 +129,36 @@
   <% the_id = @the_director.id %>
 
   <% matching_movies = Movie.where({ :director_id => the_id }) %>
-  
+
   <% films = matching_movies.order({ :year => :asc }) %>
 
   <% films.each do |a_movie| %>
-  <tr>
-    <td>
-      <%= a_movie.id %>
-    </td>
+    <tr>
+      <td>
+        <%= a_movie.id %>
+      </td>
 
-    <td>
-      <img src="<%= a_movie.image %>" style="width:250px;">
-    </td>
+      <td>
+        <img src="<%= a_movie.image %>" style="width:250px;">
+      </td>
 
-    <td>
-      <%= a_movie.title %>
-    </td>
+      <td>
+        <%= a_movie.title %>
+      </td>
 
-    <td>
-      <%= a_movie.year %>
-    </td>
+      <td>
+        <%= a_movie.year %>
+      </td>
 
-    <td>
-      <%= @the_director.name %>
-    </td>
+      <td>
+        <%= @the_director.name %>
+      </td>
 
-    <td>
-      <a href="/movies/<%= a_movie.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
+      <td>
+        <a href="/movies/<%= a_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
   <% end %>
 </table>
